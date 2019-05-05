@@ -64,3 +64,54 @@ To keep only age, sex,cp variable we can pass the data disease and age, sex,cp t
 df<- select(disease, c("age","sex","cp"))
 head(df)
 ```
+
+### Part 2 Tidyverse - Arun Reddy
+
+ The part 2 of the Tidyverse receipe is further cleaning the data to analyse the data set. The following steps are taken to meet the goals
+ 1. Change the column names
+ 2. Change the data types for some of the columns
+ 3. Analyze the data set
+
+```{r}
+#Change the column names
+disease->chest_pain
+names(chest_pain)<- c("Age","Sex","Chest Pain Type","Resting Blood Pressure","Serum Cholestoral","Fasting Blood Sugar","Resting CardioGraphic results",
+                   "Maximum Heart Rate","Excercise Induced angina","oldpeak","the slope of the peak exercise ST segment",
+                   "number of major vessels (0-3) colored by flourosopy"," thal","Target")
+# Change the values and data type of sex column
+chest_pain$Sex[chest_pain$Sex==0]<-"Female"
+chest_pain$Sex[chest_pain$Sex==1]<-"Male"
+as.factor(chest_pain$Sex)->chest_pain$Sex
+as.factor(chest_pain$Target)->chest_pain$Target
+as.factor(chest_pain$`Chest Pain Type`)->chest_pain$`Chest Pain Type`
+
+
+# Data Analysis
+
+# Distribution of Maximum heart rate
+ggplot(chest_pain,aes(chest_pain$`Maximum Heart Rate` )) + 
+  geom_histogram(fill = "dodgerblue1",alpha =0.5) +
+  theme_bw()+theme_classic()
+ggplot(chest_pain,aes(`Maximum Heart Rate`)) + geom_density(fill = "red",alpha =0.5) + theme_bw()+theme_classic()
+boxplot(chest_pain$`Maximum Heart Rate`,col ="lightblue",notch = T,main ="boxplot of the maximum heart rate")
+
+
+ggplot(data=chest_pain)+
+  aes(x=Sex,fill=Sex)+
+  geom_bar(stat = "count")+
+    labs(x="Gender",y="Count",title = "# Heart aliments by Gender")+
+  geom_label(stat='count',aes(label=..count..), size=7) +
+  theme_grey(base_size = 20)+
+  theme(panel.background = element_rect(fill="white"))
+
+ggplot( data = chest_pain)+
+  aes(x=Target,fill=Target)+
+  geom_bar(stat = "count")+
+  labs(x="Target",y="Count",title = "Count of Target")+
+  geom_label(stat='count',aes(label=..count..), size=7) +
+  theme_grey(base_size = 20)+
+  theme(panel.background = element_rect(fill="white"))
+
+
+
+```
