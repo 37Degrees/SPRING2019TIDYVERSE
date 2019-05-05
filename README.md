@@ -66,6 +66,14 @@ The associated data set has been posted on github: https://raw.githubusercontent
 ### Austin Chan
 I decided to do my tidyverse assignment on the tibbles package. The rmarkdown code has been posted to this repository and the html file can be found here: http://rpubs.com/ilawl/490256
 
+### Arun Reddy
+
+My Tidyverse receipe is two parts.
+Part 1: Explores the dplyr functions such as select, filter, group_by, summarize (http://rpubs.com/FeatherLiteR/493250)
+Part 2: Cleaning the data, data analysis using ggplot2 (http://rpubs.com/FeatherLiteR/493293)
+
+
+
 ## Nest and Unnest
 
 ### Isabel R.
