@@ -1,0 +1,131 @@
+---
+title: "How to use Tidyverse Functions - Class Collaboration"
+
+author: Arun Reddy
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    Collapsed: false
+    code_folding: show
+    theme: cosmo
+    highlight: tango
+   
+   
+    
+
+---
+
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+***
+### Introduction {.tabset .tabset-fade .tabset.-pills}
+
+![Tidyverse Packages](https://raw.githubusercontent.com/DataScienceAR/Cuny-Assignments/master/Data-607/Images/tidyverse%20packages.jpg)
+
+"Using one or more TidyVerse packages, and any dataset from fivethirtyeight.com or Kaggle, create a programming sample "vignette" that demonstrates how to use one or more of the capabilities of the selected TidyVerse package with your selected dataset."
+
+The tidyverse package we will be using here is dplyr
+
+Overview of dplyr
+
+"dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:
+
+mutate() adds new variables that are functions of existing variables
+select() picks variables based on their names.
+filter() picks cases based on their values.
+summarise() reduces multiple values down to a single summary.
+arrange() changes the ordering of the rows."
+
+***
+#### R Packages Used
+
+This assignment was accomplished by utilizing these packages for both data analysis and visualizations.
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+
+
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+
+
+```
+
+
+***
+### Data & the dplyr {.tabset .tabset-fade .tabset-pills}
+
+#### Importing the data
+
+The Google play store dataset used is retrived from kaggle Dataset.
+
+"While many public datasets (on Kaggle and the like) provide Apple App Store data, there are not many counterpart datasets available for Google Play Store apps anywhere on the web."
+
+```{r, warning=FALSE}
+StoreApps <- read_csv("https://raw.githubusercontent.com/DataScienceAR/Cuny-Assignments/master/Data-607/Data-Sets/googleplaystore.csv")
+```
+
+
+
+```{r}
+tibble(StoreApps)
+```
+
+
+#### Data manipulation with dplyr
+
+Steps involved in data manipulations are
+
+1. Selecting the desired columns with "select" function
+2. Filtering the rows with "filter"
+3. Group the data based on Genre
+
+```{r}
+
+clean_set<-StoreApps %>% 
+  select(Rating,Reviews,Genres) %>%  # Filtering the columns
+  filter(Rating>=4.7) %>%                 # Filtering the rows for Rating equal or above 4.7
+  group_by(Genres,Rating) %>% 
+  summarise(Average_Reviews=mean(Reviews))
+        
+
+kable(clean_set) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+
+```
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
