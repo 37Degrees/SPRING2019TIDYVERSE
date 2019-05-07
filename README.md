@@ -60,6 +60,13 @@ I have created a brief vignette showing the different approaches to some common 
 
 The associated data set has been posted on github: https://raw.githubusercontent.com/Jagdish16/jagdish_r_repo/master/DATA607/camera_dataset.csv
  and the html file can be found here: bs.com/Jagdish/ds607_tidyverse_vignette
+ 
+ 
+ ### Arun Reddy
+ I wrote a dplyr vignette in part 1 showing some of the data manipulations functions like select, filter, group_by
+ and in part 2 I did the extension to my fellow classmate for Data analysis usign ggplot2.
+Part 1: https://raw.githubusercontent.com/DataScienceAR/SPRING2019TIDYVERSE/master/Tidyverse_Part1_ArunReddy.Rmd 
+Part 2: https://raw.githubusercontent.com/DataScienceAR/SPRING2019TIDYVERSE/master/DATA%20607%20Tidy%20Verse%20assignment.Rmd (Extension to Yohannes Deboch)
 
 ## tibbles
  
